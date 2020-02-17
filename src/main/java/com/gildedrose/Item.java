@@ -23,6 +23,8 @@ public class Item {
                 return new BackStagePass(sellIn,quality);
             case "Sulfuras, Hand of Ragnaros":
                 return new Sulfuras(sellIn,quality);
+            case "Conjured":
+                return new Conjured(sellIn,quality);
             default:
                 return new Item(name, sellIn, quality);
         }
@@ -31,14 +33,13 @@ public class Item {
 
     void doUpdateQuality() {
         if (quality > 0) {
-            quality = quality - 1;
+            quality--;
         }
-
-        sellIn = sellIn - 1;
+        sellIn--;
 
         if (sellIn < 0) {
             if (quality > 0) {
-                quality = quality - 1;
+                quality--;
             }
         }
     }
